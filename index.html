@@ -2,797 +2,888 @@
 <html lang="hy">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>ՈւսանողՊաշտպան Ինշուրանս</title>
-    <!-- Font Awesome for icons (falling items and UI) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ՈւսանողՊաշտպան Ինշուրանս | StudentGuard</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --dark-blue: #0A2647;
+            --light-blue: #5F9DF9;
+            --gold: #FFD966;
+            --white: #FFFFFF;
+            --off-white: #F8FAFC;
+            --gray: #64748B;
+            --gradient-light: linear-gradient(145deg, #f6f9fc 0%, #eaf2fb 100%);
         }
 
         body {
-            background-color: #f0f9ff;  /* very light blue background */
-            color: #003366;              /* deep navy for text */
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
+            background-color: var(--white);
+            color: #1E293B;
+            line-height: 1.5;
+            scroll-behavior: smooth;
         }
 
-        /* ===== FALLING ITEMS ANIMATION ===== */
-        .falling-items-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;  /* so they don't block clicks */
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .falling-item {
-            position: absolute;
-            color: rgba(0, 191, 255, 0.25); /* deep sky blue, translucent */
-            font-size: 1.8rem;
-            animation: fall linear infinite;
-            user-select: none;
-            opacity: 0.7;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-20vh) rotate(0deg);
-                opacity: 0.2;
-            }
-            100% {
-                transform: translateY(120vh) rotate(360deg);
-                opacity: 0.1;
-            }
-        }
-
-        /* main content should be above falling items */
-        .page-wrapper {
-            position: relative;
-            z-index: 10;
-            max-width: 1200px;
+        .container {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px 40px;
-            background-color: rgba(255, 255, 255, 0.85); /* semi-transparent white to let background show slightly */
-            backdrop-filter: blur(2px);
-            border-radius: 0 0 40px 40px;
-            box-shadow: 0 8px 32px rgba(0, 128, 255, 0.1);
+            padding: 0 24px;
         }
 
-        /* ===== LANGUAGE SELECTOR ===== */
-        .lang-header {
+        /* header */
+        .navbar {
             display: flex;
-            justify-content: flex-end;
-            padding: 20px 0 10px;
-            position: relative;
-        }
-
-        .lang-dropdown-btn {
-            background-color: #0099ff; /* яркий голубой */
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(10, 38, 71, 0.08);
+            background-color: var(--white);
         }
 
-        .lang-dropdown-btn:hover {
-            background-color: #0077cc;
-            transform: scale(1.05);
-        }
-
-        .lang-dropdown-content {
-            display: none;
-            position: absolute;
-            top: 80px;
-            right: 0;
-            background-color: white;
-            min-width: 200px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 100, 255, 0.3);
-            padding: 12px 0;
-            z-index: 100;
-            border: 2px solid #b3e0ff;
-        }
-
-        .lang-dropdown-content.show {
-            display: block;
-        }
-
-        .lang-option {
-            padding: 12px 24px;
-            cursor: pointer;
-            font-weight: 500;
-            color: #003366;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-option i {
-            width: 24px;
-            color: #0099ff;
-        }
-
-        .lang-option:hover {
-            background-color: #e6f3ff;
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(4px);
-            border-radius: 48px;
-            padding: 40px 36px;
-            margin: 40px 0;
-            box-shadow: 0 12px 28px rgba(0, 162, 255, 0.15);
-            border: 1px solid rgba(0, 191, 255, 0.3);
-        }
-
-        h1, h2, h3 {
-            color: #0066cc; /* яркий голубой для заголовков */
+        .logo {
             font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--off-white);
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(10, 38, 71, 0.1);
+        }
+
+        .lang-selector i {
+            color: var(--dark-blue);
+            font-size: 1rem;
+        }
+
+        .lang-selector select {
+            background: transparent;
+            border: none;
+            font-weight: 500;
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--dark-blue);
+            color: white;
+            box-shadow: 0 8px 16px -6px rgba(10, 38, 71, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #123456;
+            transform: scale(1.02);
+            box-shadow: 0 12px 20px -8px rgba(10, 38, 71, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--dark-blue);
+            border: 2px solid var(--dark-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--dark-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
         }
 
-        h1 {
-            font-size: 3.2rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 0 #b3e6ff;
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 2rem;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 6px;
-            background: #0099ff;
-            border-radius: 6px;
-        }
-
-        .slogan {
-            font-size: 1.8rem;
-            color: #004c99;
-            font-style: italic;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .cover-image {
-            background: linear-gradient(145deg, #b3e0ff, #66ccff);
-            padding: 40px 20px;
-            border-radius: 60px;
-            margin-top: 30px;
+        /* hero */
+        .hero {
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            border: 2px dashed white;
-        }
-
-        .student-illustration {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .student-card {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 40px;
-            box-shadow: 0 20px 30px rgba(0,128,255,0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #0066cc;
-        }
-        .student-card i {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            color: #0099ff;
-        }
-
-        /* problem / solution layout */
-        .row {
-            display: flex;
             gap: 40px;
-            align-items: center;
+            padding: 60px 0;
             flex-wrap: wrap;
-        }
-        .col-text {
-            flex: 1 1 300px;
-        }
-        .col-icon {
-            flex: 0 0 150px;
-            text-align: center;
-            font-size: 6rem;
-            color: #0099ff;
-        }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        .feature-item {
-            background: white;
-            border-radius: 36px;
-            padding: 25px;
-            flex: 1 1 180px;
-            text-align: center;
-            border: 3px solid #99ddff;
-            box-shadow: 0 8px 0 #0077cc;
-        }
-        .feature-item i {
-            font-size: 3rem;
-            color: #0099ff;
-            margin-bottom: 15px;
-        }
-        .feature-item p {
-            font-weight: 600;
         }
 
-        /* packages cards */
-        .package-cards {
+        .hero-content {
+            flex: 1 1 400px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
             display: flex;
+            gap: 16px;
             flex-wrap: wrap;
-            gap: 30px;
+        }
+
+        .hero-illustration {
+            flex: 1 1 300px;
+            display: flex;
             justify-content: center;
-            margin-top: 40px;
+            align-items: center;
+            background: var(--gradient-light);
+            border-radius: 48px;
+            padding: 40px 20px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05);
         }
-        .package-card {
-            background: white;
-            border-radius: 40px;
-            padding: 30px 25px;
-            flex: 1 1 280px;
-            max-width: 350px;
-            border: 2px solid #66ccff;
-            box-shadow: 0 16px 0 #0088cc;
-            transition: 0.2s;
+
+        .hero-illustration i {
+            font-size: 10rem;
+            color: var(--dark-blue);
+            filter: drop-shadow(0 8px 12px rgba(10,38,71,0.15));
         }
-        .package-card:hover {
+
+        /* cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 32px 24px;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(95, 157, 249, 0.2);
+            text-align: center;
+        }
+
+        .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 24px 0 #006bb3;
+            box-shadow: 0 20px 30px -10px var(--light-blue);
+            border-color: var(--light-blue);
         }
-        .package-name {
+
+        .card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            background: rgba(255, 217, 102, 0.15);
+            padding: 16px;
+            border-radius: 60px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+        }
+
+        /* pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 40px;
+            padding: 36px 24px;
+            box-shadow: 0 20px 35px -10px rgba(10,38,71,0.1);
+            border: 1px solid var(--off-white);
+            transition: 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--gold);
+            transform: scale(1.02);
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 25px 40px -12px var(--dark-blue);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 8px 40px;
+            font-weight: 600;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .price {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #003366;
-            margin-bottom: 10px;
-        }
-        .package-price {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #0099ff;
-            margin-bottom: 20px;
-        }
-        .package-price small {
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
-        .package-features {
-            list-style: none;
-            padding: 0;
-        }
-        .package-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #cceeff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .package-features i {
-            color: #0099ff;
-            width: 25px;
+            color: var(--dark-blue);
+            margin: 20px 0;
         }
 
-        /* compensation block */
+        .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .pricing-features i {
+            color: var(--light-blue);
+            width: 20px;
+        }
+
+        /* compensation blocks */
         .compensation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0 20px;
-        }
-        .comp-item {
-            background: #e6f7ff;
-            border-radius: 36px;
-            padding: 25px;
-            border-left: 10px solid #0099ff;
-        }
-        .comp-item h3 {
-            margin-bottom: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
         }
 
-        .contact-block {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            background: #cceeff;
-            border-radius: 60px;
-            padding: 40px;
-            margin-top: 30px;
+        .comp-block {
+            background: var(--off-white);
+            border-radius: 28px;
+            padding: 28px;
+            border-left: 6px solid var(--gold);
+            transition: 0.2s;
         }
-        .contact-item {
-            text-align: center;
+
+        .comp-block:hover {
+            background: white;
+            box-shadow: 0 10px 20px -5px rgba(95,157,249,0.3);
+        }
+
+        .comp-block h4 {
             font-size: 1.4rem;
-        }
-        .contact-item i {
-            font-size: 3rem;
-            color: #0066cc;
-            margin-bottom: 15px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #0077be;
-            font-weight: 500;
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* mobile tweaks */
+        /* contact form */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: var(--gradient-light);
+            border-radius: 48px;
+            padding: 48px;
+            margin: 40px 0;
+        }
+
+        .contact-info {
+            flex: 1 1 250px;
+        }
+
+        .contact-info i {
+            color: var(--dark-blue);
+            margin-right: 10px;
+            width: 30px;
+        }
+
+        .contact-form {
+            flex: 2 1 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #dde7f0;
+            border-radius: 40px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .form-group textarea {
+            border-radius: 30px;
+            resize: vertical;
+        }
+
+        .footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* responsive */
         @media (max-width: 700px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .page-wrapper { padding: 0 12px 30px; }
-            section { padding: 30px 18px; }
-            .col-icon { font-size: 4rem; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.8rem; }
+            .navbar { flex-direction: column; align-items: flex-start; }
         }
 
-        /* active language bold */
-        .active-lang {
-            background-color: #e0f0ff;
-            font-weight: 700;
+        /* animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
+        .hero-illustration i { animation: float 4s ease-in-out infinite; }
     </style>
 </head>
 <body>
-    <!-- falling items: pens, papers, books -->
-    <div class="falling-items-container" id="fallingItems"></div>
-
-    <div class="page-wrapper">
-        <!-- Language selector -->
-        <div class="lang-header">
-            <button class="lang-dropdown-btn" id="langDropdownBtn">
-                <i class="fas fa-globe"></i> <span id="currentLangLabel">Հայերեն</span> <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="lang-dropdown-content" id="langDropdown">
-                <div class="lang-option" data-lang="hy"><i class="fas fa-language"></i> Հայերեն</div>
-                <div class="lang-option" data-lang="ru"><i class="fas fa-language"></i> Русский</div>
-                <div class="lang-option" data-lang="en"><i class="fas fa-language"></i> English</div>
-                <div class="lang-option" data-lang="es"><i class="fas fa-language"></i> Español</div>
-                <div class="lang-option" data-lang="pt"><i class="fas fa-language"></i> Português</div>
-                <div class="lang-option" data-lang="uk"><i class="fas fa-language"></i> Українська</div>
-                <div class="lang-option" data-lang="zh"><i class="fas fa-language"></i> 中文</div>
+    <div class="container">
+        <!-- Header -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-shield-halos"></i> 
+                <span data-i18n="company_name">ՈւսանողՊաշտպան Ինշուրանս</span>
             </div>
-        </div>
+            <div class="lang-selector">
+                <i class="fas fa-globe"></i>
+                <select id="languageSwitcher" aria-label="Language switcher">
+                    <option value="hy" selected>Հայերեն</option>
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                    <option value="uk">Українська</option>
+                    <option value="ja">日本語</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </nav>
 
-        <!-- CONTENT SECTIONS (all data will be filled by JS) -->
-        <!-- page 1 - cover -->
-        <section id="section-cover">
-            <h1 id="cover-title">ՈւսանողՊաշտպան Ինշուրանս</h1>
-            <div class="slogan" id="cover-slogan">«Ապահով ուսում՝ վստահ ապագա»</div>
-            <div class="cover-image">
-                <div class="student-illustration">
-                    <div class="student-card"><i class="fas fa-laptop"></i> <span>Աննա</span></div>
-                    <div class="student-card"><i class="fas fa-book-open"></i> <span>Արմեն</span></div>
-                    <div class="student-card"><i class="fas fa-graduation-cap"></i> <span>Մարիամ</span></div>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 data-i18n="hero_title">ՈւսանողՊաշտպան Ինշուրանս</h1>
+                <p data-i18n="hero_subtitle">Ապահովագրություն, որը պաշտպանում է քո ուսումը անսպասելի խնդիրներից։</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary" data-i18n="hero_btn1">Get Insurance</a>
+                    <a href="#" class="btn btn-outline" data-i18n="hero_btn2">Learn More</a>
                 </div>
             </div>
-        </section>
-
-        <!-- page 2 - problem -->
-        <section id="section-problem">
-            <div class="row">
-                <div class="col-text">
-                    <h2 id="problem-title">Ի՞նչ խնդիր է լուծում նախագիծը</h2>
-                    <p id="problem-text">Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։</p>
-                </div>
-                <div class="col-icon" id="problem-icon"><i class="fas fa-laptop broken"></i> <i class="fas fa-door-closed"></i></div>
+            <div class="hero-illustration">
+                <i class="fas fa-graduation-cap"></i>
+                <i class="fas fa-shield-heart" style="font-size: 6rem; margin-left: -20px;"></i>
             </div>
         </section>
 
-        <!-- page 3 - solution -->
-        <section id="section-solution">
-            <h2 id="solution-title">Ինչ ենք առաջարկում</h2>
-            <div class="features">
-                <div class="feature-item"><i class="fas fa-shield-alt"></i> <p id="sol1">Ուսման վճարի սառեցում</p></div>
-                <div class="feature-item"><i class="fas fa-laptop"></i> <p id="sol2">Սարքերի ապահովագրություն</p></div>
-                <div class="feature-item"><i class="fas fa-home"></i> <p id="sol3">Բնակարանի աջակցություն</p></div>
+        <!-- PROBLEM -->
+        <section>
+            <h2 class="section-title" data-i18n="problem_title">Ի՞նչ խնդիր է լուծում նախագիծը</h2>
+            <p class="section-subtitle" data-i18n="problem_text">Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։</p>
+        </section>
+
+        <!-- WHAT WE OFFER -->
+        <section>
+            <h2 class="section-title" data-i18n="offer_title">Ինչ ենք առաջարկում</h2>
+            <div class="cards-grid">
+                <div class="card"><i class="fas fa-coins"></i><h3 data-i18n="offer1">Ուսման վճարի սառեցում</h3></div>
+                <div class="card"><i class="fas fa-laptop"></i><h3 data-i18n="offer2">Սարքերի ապահովագրություն</h3></div>
+                <div class="card"><i class="fas fa-house"></i><h3 data-i18n="offer3">Բնակարանի աջակցություն</h3></div>
             </div>
         </section>
 
-        <!-- page 4 - packages (updated pricing) -->
-        <section id="section-packages">
-            <h2 id="packages-title">Փաթեթներ և գին</h2>
-            <div class="package-cards">
-                <div class="package-card">
-                    <div class="package-name" id="monthly-name">Ամսական</div>
-                    <div class="package-price">2500 <small>դրամ/ամիս</small></div>
-                    <ul class="package-features" id="monthly-feat">
-                        <li><i class="fas fa-check-circle"></i> <span>Ուսման վճարի սառեցում</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Նոթբուքի ապահովագրություն</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Բնակարանային աջակցություն</span></li>
+        <!-- PRICING -->
+        <section>
+            <h2 class="section-title" data-i18n="pricing_title">Փաթեթներ և գին</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 data-i18n="monthly_name">Ամսական</h3>
+                    <div class="price"><span data-i18n="monthly_price">2500 դրամ</span> <small data-i18n="per_month">/ ամիս</small></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="monthly_feat1">Ուսման վճարի սառեցում</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="monthly_feat2">Նոթբուքի ապահովագրություն</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="monthly_feat3">Բնակարանային աջակցություն</span></li>
                     </ul>
                 </div>
-                <div class="package-card">
-                    <div class="package-name" id="yearly-name">Տարեկան</div>
-                    <div class="package-price">30000 <small>դրամ/տարի</small></div>
-                    <ul class="package-features" id="yearly-feat">
-                        <li><i class="fas fa-check-circle"></i> <span>Ամեն ինչ ամսականից</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>+ երկարաձգված աջակցություն</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>24/7 թեժ գիծ</span></li>
+                <div class="pricing-card popular">
+                    <div class="pricing-badge" data-i18n="popular_badge">Հայտնի</div>
+                    <h3 data-i18n="annual_name">Տարեկան</h3>
+                    <div class="price"><span data-i18n="annual_price">30000 դրամ</span> <small data-i18n="per_year">/ տարի</small></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="annual_feat1">Ամեն ինչ ամսականից</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="annual_feat2">+ երկարաձգված աջակցություն</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="annual_feat3">24/7 թեժ գիծ</span></li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- additional compensation info block (as per request) -->
-        <section id="section-compensation">
-            <h2 id="comp-title">💵 Երբ է կատարվում փոխհատուցումը</h2>
+        <!-- COMPENSATION -->
+        <section>
+            <h2 class="section-title" data-i18n="comp_title">💵 Երբ է կատարվում փոխհատուցումը</h2>
             <div class="compensation-grid">
-                <div class="comp-item">
-                    <h3><i class="fas fa-thermometer-half"></i> <span id="comp1-title">Հիվանդության դեպքում</span></h3>
-                    <p id="comp1-text">Բժշկական տեղեկանք, ուսման վճարի սառեցում կամ մասնակի փոխհատուցում: 10 աշխատանքային օր:</p>
-                </div>
-                <div class="comp-item">
-                    <h3><i class="fas fa-laptop"></i> <span id="comp2-title">Նոթբուքի վնաս/գողություն</span></h3>
-                    <p id="comp2-text">Ոստիկանության/սերվիսի փաստաթուղթ, փոխհատուցում մինչև 300,000 դրամ: 5-10 օր:</p>
-                </div>
-                <div class="comp-item">
-                    <h3><i class="fas fa-clock"></i> <span id="comp3-title">Ուժի մեջ է մտնում</span></h3>
-                    <p id="comp3-text">Վճարումից 7 օր հետո: Ապահովագրությունը ակտիվ է:</p>
-                </div>
-                <div class="comp-item">
-                    <h3><i class="fas fa-hand-holding-heart"></i> <span id="comp4-title">Եթե ուսանողը չի աշխատում</span></h3>
-                    <p id="comp4-text">Ծնողի միջոցով կամ համալսարանի հետ համագործակցությամբ:</p>
-                </div>
+                <div class="comp-block"><h4><i class="fas fa-notes-medical"></i> <span data-i18n="comp1_title">Հիվանդության դեպքում</span></h4><p data-i18n="comp1_desc">Բժշկական տեղեկանք, ուսման վճարի սառեցում կամ մասնակի փոխհատուցում։ 10 աշխատանքային օր:</p></div>
+                <div class="comp-block"><h4><i class="fas fa-laptop"></i> <span data-i18n="comp2_title">Նոթբուքի վնաս կամ գողություն</span></h4><p data-i18n="comp2_desc">Ոստիկանության կամ սերվիսի փաստաթուղթ։ Փոխհատուցում մինչև 300,000 դրամ։ 5–10 օր:</p></div>
+                <div class="comp-block"><h4><i class="fas fa-clock"></i> <span data-i18n="comp3_title">Ուժի մեջ է մտնում</span></h4><p data-i18n="comp3_desc">Վճարումից 7 օր հետո ապահովագրությունը ակտիվ է։</p></div>
+                <div class="comp-block"><h4><i class="fas fa-briefcase"></i> <span data-i18n="comp4_title">Եթե ուսանողը չի աշխատում</span></h4><p data-i18n="comp4_desc">Ծնողի միջոցով կամ համալսարանի հետ համագործակցությամբ։</p></div>
             </div>
         </section>
 
-        <!-- page 5 - purpose -->
-        <section id="section-purpose">
-            <h2 id="purpose-title">Մեր առաքելությունը</h2>
-            <div class="row">
-                <div class="col-text">
-                    <p id="purpose-text">Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։</p>
+        <!-- MISSION -->
+        <section style="text-align: center; padding: 60px 0;">
+            <h2 class="section-title" data-i18n="mission_title">Մեր առաքելությունը</h2>
+            <p class="section-subtitle" style="margin:0 auto;" data-i18n="mission_text">Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։</p>
+        </section>
+
+        <!-- CONTACT -->
+        <section>
+            <h2 class="section-title" data-i18n="contact_title">Կապ մեզ հետ</h2>
+            <div class="contact-row">
+                <div class="contact-info">
+                    <p><i class="fas fa-phone-alt"></i> <span data-i18n="phone">+374 77 123456</span></p>
+                    <p><i class="fas fa-envelope"></i> <span data-i18n="email">info@studentguard.am</span></p>
                 </div>
-                <div class="col-icon"><i class="fas fa-graduation-cap"></i><i class="fas fa-lightbulb"></i></div>
+                <div class="contact-form">
+                    <div class="form-group"><input type="text" placeholder="Name" data-i18n-placeholder="form_name"></div>
+                    <div class="form-group"><input type="email" placeholder="Email" data-i18n-placeholder="form_email"></div>
+                    <div class="form-group"><textarea rows="3" placeholder="Message" data-i18n-placeholder="form_msg"></textarea></div>
+                    <button class="btn btn-primary" style="width: fit-content;" data-i18n="form_btn">Send</button>
+                </div>
             </div>
         </section>
-
-        <!-- page 6 - contacts -->
-        <section id="section-contacts">
-            <h2 id="contacts-title">Կապ մեզ հետ</h2>
-            <div class="contact-block">
-                <div class="contact-item"><i class="fas fa-phone-alt"></i> +374 77 123456</div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> info@studentguard.am</div>
-                <div class="contact-item"><i class="fas fa-globe"></i> www.studentguard.am</div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 ՈւսանողՊաշտպան Ինշուրանս</p>
-        </footer>
     </div>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <span>© 2025 ՈւսանողՊաշտպան Ինշուրանս</span>
+            <span><i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i> <i class="fab fa-linkedin"></i></span>
+        </div>
+    </footer>
+
+    <!-- Language translations & script -->
     <script>
         (function() {
-            // ---------- FALLING ITEMS ----------
-            const fallingContainer = document.getElementById('fallingItems');
-            const icons = ['fa-pen', 'fa-pen-fancy', 'fa-file', 'fa-file-lines', 'fa-book', 'fa-book-open', 'fa-newspaper', 'fa-paperclip'];
-            for (let i = 0; i < 35; i++) {
-                const item = document.createElement('i');
-                const randIcon = icons[Math.floor(Math.random() * icons.length)];
-                item.className = `fas ${randIcon} falling-item`;
-                const size = Math.random() * 2 + 1; // rem
-                item.style.fontSize = size + 'rem';
-                item.style.left = Math.random() * 100 + '%';
-                item.style.animationDuration = (Math.random() * 8 + 6) + 's'; // 6-14s
-                item.style.animationDelay = (Math.random() * -20) + 's'; // staggered starts
-                item.style.opacity = 0.2 + Math.random() * 0.2;
-                fallingContainer.appendChild(item);
-            }
-
-            // ---------- LANGUAGE TRANSLATIONS ----------
             const translations = {
-                hy: { // Armenian
-                    'cover-title': 'ՈւսանողՊաշտպան Ինշուրանս',
-                    'cover-slogan': '«Ապահով ուսում՝ վստահ ապագա»',
-                    'problem-title': 'Ի՞նչ խնդիր է լուծում նախագիծը',
-                    'problem-text': 'Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։',
-                    'solution-title': 'Ինչ ենք առաջարկում',
-                    'sol1': 'Ուսման վճարի սառեցում',
-                    'sol2': 'Սարքերի ապահովագրություն',
-                    'sol3': 'Բնակարանի աջակցություն',
-                    'packages-title': 'Փաթեթներ և գին',
-                    'monthly-name': 'Ամսական',
-                    'yearly-name': 'Տարեկան',
-                    'comp-title': '💵 Երբ է կատարվում փոխհատուցումը',
-                    'comp1-title': 'Հիվանդության դեպքում',
-                    'comp1-text': 'Բժշկական տեղեկանք, ուսման վճարի սառեցում կամ մասնակի փոխհատուցում: 10 աշխատանքային օր:',
-                    'comp2-title': 'Նոթբուքի վնաս/գողություն',
-                    'comp2-text': 'Ոստիկանության/սերվիսի փաստաթուղթ, փոխհատուցում մինչև 300,000 դրամ: 5-10 օր:',
-                    'comp3-title': 'Ուժի մեջ է մտնում',
-                    'comp3-text': 'Վճարումից 7 օր հետո: Ապահովագրությունը ակտիվ է:',
-                    'comp4-title': 'Եթե ուսանողը չի աշխատում',
-                    'comp4-text': 'Ծնողի միջոցով կամ համալսարանի հետ համագործակցությամբ:',
-                    'purpose-title': 'Մեր առաքելությունը',
-                    'purpose-text': 'Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։',
-                    'contacts-title': 'Կապ մեզ հետ',
-                },
-                ru: {
-                    'cover-title': 'СтудентЗащита Страхование',
-                    'cover-slogan': '«Безопасное обучение — уверенное будущее»',
-                    'problem-title': 'Какую проблему решает проект',
-                    'problem-text': 'Многие студенты могут прервать обучение из-за финансовых или неожиданных проблем. Болезнь, поломка техники или проблемы с жильём могут помешать учёбе.',
-                    'solution-title': 'Что мы предлагаем',
-                    'sol1': 'Заморозка платы за обучение',
-                    'sol2': 'Страхование ноутбука',
-                    'sol3': 'Помощь с жильём',
-                    'packages-title': 'Пакеты и цены',
-                    'monthly-name': 'Ежемесячный',
-                    'yearly-name': 'Годовой',
-                    'comp-title': '💵 Когда выплачивается компенсация',
-                    'comp1-title': 'В случае болезни',
-                    'comp1-text': 'Медицинская справка, заморозка или частичная компенсация оплаты обучения. 10 рабочих дней.',
-                    'comp2-title': 'Поломка/кража ноутбука',
-                    'comp2-text': 'Справка из полиции/сервиса, компенсация до 300 000 драм. 5-10 дней.',
-                    'comp3-title': 'Вступление в силу',
-                    'comp3-text': 'Через 7 дней после оплаты. Страховка активна.',
-                    'comp4-title': 'Если студент не работает',
-                    'comp4-text': 'Через родителя или сотрудничество с университетом.',
-                    'purpose-title': 'Наша миссия',
-                    'purpose-text': 'Мы гарантируем, что ни один студент не прервёт обучение из-за непредвиденных проблем.',
-                    'contacts-title': 'Свяжитесь с нами',
+                hy: { // Armenian (default)
+                    company_name: "ՈւսանողՊաշտպան Ինշուրանս",
+                    hero_title: "ՈւսանողՊաշտպան Ինշուրանս",
+                    hero_subtitle: "Ապահովագրություն, որը պաշտպանում է քո ուսումը անսպասելի խնդիրներից։",
+                    hero_btn1: "Ձեռք բերել ապահովագրություն",
+                    hero_btn2: "Իմանալ ավելին",
+                    problem_title: "Ի՞նչ խնդիր է լուծում նախագիծը",
+                    problem_text: "Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։",
+                    offer_title: "Ինչ ենք առաջարկում",
+                    offer1: "Ուսման վճարի սառեցում",
+                    offer2: "Սարքերի ապահովագրություն",
+                    offer3: "Բնակարանի աջակցություն",
+                    pricing_title: "Փաթեթներ և գին",
+                    monthly_name: "Ամսական",
+                    monthly_price: "2500 դրամ",
+                    per_month: "/ ամիս",
+                    monthly_feat1: "Ուսման վճարի սառեցում",
+                    monthly_feat2: "Նոթբուքի ապահովագրություն",
+                    monthly_feat3: "Բնակարանային աջակցություն",
+                    annual_name: "Տարեկան",
+                    annual_price: "30000 դրամ",
+                    per_year: "/ տարի",
+                    annual_feat1: "Ամեն ինչ ամսականից",
+                    annual_feat2: "+ երկարաձգված աջակցություն",
+                    annual_feat3: "24/7 թեժ գիծ",
+                    popular_badge: "Հայտնի",
+                    comp_title: "💵 Երբ է կատարվում փոխհատուցումը",
+                    comp1_title: "Հիվանդության դեպքում",
+                    comp1_desc: "Բժշկական տեղեկանք, ուսման վճարի սառեցում կամ մասնակի փոխհատուցում։ 10 աշխատանքային օր:",
+                    comp2_title: "Նոթբուքի վնաս կամ գողություն",
+                    comp2_desc: "Ոստիկանության կամ սերվիսի փաստաթուղթ։ Փոխհատուցում մինչև 300,000 դրամ։ 5–10 օր:",
+                    comp3_title: "Ուժի մեջ է մտնում",
+                    comp3_desc: "Վճարումից 7 օր հետո ապահովագրությունը ակտիվ է։",
+                    comp4_title: "Եթե ուսանողը չի աշխատում",
+                    comp4_desc: "Ծնողի միջոցով կամ համալսարանի հետ համագործակցությամբ։",
+                    mission_title: "Մեր առաքելությունը",
+                    mission_text: "Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։",
+                    contact_title: "Կապ մեզ հետ",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "Անուն",
+                    form_email: "Էլ․ հասցե",
+                    form_msg: "Հաղորդագրություն",
+                    form_btn: "Ուղարկել"
                 },
                 en: {
-                    'cover-title': 'StudentGuard Insurance',
-                    'cover-slogan': '“Safe study, confident future”',
-                    'problem-title': 'What problem does the project solve?',
-                    'problem-text': 'Many students may have to interrupt their studies due to financial or unexpected issues. Illness, device damage, or housing problems can hinder education.',
-                    'solution-title': 'Our offer',
-                    'sol1': 'Tuition fee freeze',
-                    'sol2': 'Laptop insurance',
-                    'sol3': 'Housing assistance',
-                    'packages-title': 'Packages & pricing',
-                    'monthly-name': 'Monthly',
-                    'yearly-name': 'Yearly',
-                    'comp-title': '💰 When is compensation paid?',
-                    'comp1-title': 'In case of illness',
-                    'comp1-text': 'Medical certificate, tuition freeze or partial refund. 10 business days.',
-                    'comp2-title': 'Laptop damage/theft',
-                    'comp2-text': 'Police/service center document, compensation up to 300,000 dram. 5-10 days.',
-                    'comp3-title': 'Coverage starts',
-                    'comp3-text': '7 days after payment. Insurance active.',
-                    'comp4-title': 'If student is not working',
-                    'comp4-text': 'Through parents or university collaboration.',
-                    'purpose-title': 'Our mission',
-                    'purpose-text': 'We ensure that no student interrupts their education due to unexpected problems.',
-                    'contacts-title': 'Contact us',
+                    company_name: "StudentGuard Insurance",
+                    hero_title: "StudentGuard Insurance",
+                    hero_subtitle: "Insurance that protects your education from unexpected troubles.",
+                    hero_btn1: "Get Insurance",
+                    hero_btn2: "Learn More",
+                    problem_title: "What problem does it solve?",
+                    problem_text: "Many students may drop out due to financial or unexpected problems. Illness, device damage, or housing issues can disrupt studies.",
+                    offer_title: "What we offer",
+                    offer1: "Tuition freeze",
+                    offer2: "Device insurance",
+                    offer3: "Housing support",
+                    pricing_title: "Packages & pricing",
+                    monthly_name: "Monthly",
+                    monthly_price: "AMD 2500",
+                    per_month: "/ month",
+                    monthly_feat1: "Tuition freeze",
+                    monthly_feat2: "Laptop insurance",
+                    monthly_feat3: "Housing support",
+                    annual_name: "Annual",
+                    annual_price: "AMD 30000",
+                    per_year: "/ year",
+                    annual_feat1: "Everything in monthly",
+                    annual_feat2: "+ extended support",
+                    annual_feat3: "24/7 hotline",
+                    popular_badge: "Popular",
+                    comp_title: "💵 When is compensation paid?",
+                    comp1_title: "In case of illness",
+                    comp1_desc: "Medical certificate, tuition freeze or partial compensation. 10 business days.",
+                    comp2_title: "Laptop damage or theft",
+                    comp2_desc: "Police or service report. Compensation up to AMD 300,000. 5–10 days.",
+                    comp3_title: "Effective from",
+                    comp3_desc: "Insurance becomes active 7 days after payment.",
+                    comp4_title: "If student is unemployed",
+                    comp4_desc: "Through parent or university cooperation.",
+                    mission_title: "Our mission",
+                    mission_text: "We ensure that no student has to interrupt their education due to unexpected problems.",
+                    contact_title: "Contact us",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "Name",
+                    form_email: "Email",
+                    form_msg: "Message",
+                    form_btn: "Send"
                 },
-                es: {
-                    'cover-title': 'Seguro EstudianteProtector',
-                    'cover-slogan': '“Estudio seguro, futuro confiado”',
-                    'problem-title': '¿Qué problema resuelve?',
-                    'problem-text': 'Muchos estudiantes pueden interrumpir sus estudios por problemas financieros o inesperados. Enfermedad, daños en dispositivos o problemas de vivienda pueden obstaculizar la educación.',
-                    'solution-title': 'Nuestra oferta',
-                    'sol1': 'Congelación de matrícula',
-                    'sol2': 'Seguro de laptop',
-                    'sol3': 'Asistencia de vivienda',
-                    'packages-title': 'Paquetes y precios',
-                    'monthly-name': 'Mensual',
-                    'yearly-name': 'Anual',
-                    'comp-title': '💰 ¿Cuándo se paga la compensación?',
-                    'comp1-title': 'En caso de enfermedad',
-                    'comp1-text': 'Certificado médico, congelación de matrícula o reembolso parcial. 10 días hábiles.',
-                    'comp2-title': 'Daño/robo de laptop',
-                    'comp2-text': 'Documento policial/taller, compensación hasta 300.000 dram. 5-10 días.',
-                    'comp3-title': 'Entrada en vigor',
-                    'comp3-text': '7 días después del pago. Seguro activo.',
-                    'comp4-title': 'Si el estudiante no trabaja',
-                    'comp4-text': 'A través de padres o colaboración universitaria.',
-                    'purpose-title': 'Nuestra misión',
-                    'purpose-text': 'Aseguramos que ningún estudiante interrumpa su educación por problemas inesperados.',
-                    'contacts-title': 'Contáctenos',
+                ru: { 
+                    company_name: "StudentGuard Insurance",
+                    hero_title: "StudentGuard Insurance",
+                    hero_subtitle: "Страхование, которое защищает ваше обучение от неожиданных проблем.",
+                    hero_btn1: "Получить страховку",
+                    hero_btn2: "Узнать больше",
+                    problem_title: "Какую проблему решает проект?",
+                    problem_text: "Многие студенты могут бросить учебу из-за финансовых или непредвиденных проблем. Болезнь, поломка устройства или проблемы с жильем могут помешать учебе.",
+                    offer_title: "Что мы предлагаем",
+                    offer1: "Заморозка платы за обучение",
+                    offer2: "Страхование устройств",
+                    offer3: "Поддержка жилья",
+                    pricing_title: "Пакеты и цены",
+                    monthly_name: "Ежемесячный",
+                    monthly_price: "2500 драм",
+                    per_month: "/ месяц",
+                    monthly_feat1: "Заморозка оплаты",
+                    monthly_feat2: "Страхование ноутбука",
+                    monthly_feat3: "Поддержка жилья",
+                    annual_name: "Годовой",
+                    annual_price: "30000 драм",
+                    per_year: "/ год",
+                    annual_feat1: "Всё из месячного",
+                    annual_feat2: "+ расширенная поддержка",
+                    annual_feat3: "Горячая линия 24/7",
+                    popular_badge: "Популярное",
+                    comp_title: "💵 Когда выплачивается компенсация?",
+                    comp1_title: "В случае болезни",
+                    comp1_desc: "Медицинская справка, заморозка или частичная компенсация. 10 рабочих дней.",
+                    comp2_title: "Повреждение или кража ноутбука",
+                    // Updated to explicitly say "возврат средств" (refund) as requested
+                    comp2_desc: "Справка из полиции или сервиса. Возврат средств до 300 000 драм. 5–10 дней.",
+                    comp3_title: "Вступление в силу",
+                    comp3_desc: "Страховка активна через 7 дней после оплаты.",
+                    comp4_title: "Если студент не работает",
+                    comp4_desc: "Через родителей или сотрудничество с университетом.",
+                    mission_title: "Наша миссия",
+                    mission_text: "Мы следим, чтобы ни один студент не прерывал обучение из-за непредвиденных проблем.",
+                    contact_title: "Свяжитесь с нами",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "Имя",
+                    form_email: "Эл. почта",
+                    form_msg: "Сообщение",
+                    form_btn: "Отправить"
                 },
-                pt: {
-                    'cover-title': 'Seguro EstudanteProtetor',
-                    'cover-slogan': '“Estudo seguro, futuro confiante”',
-                    'problem-title': 'Que problema resolve?',
-                    'problem-text': 'Muitos estudantes podem interromper os estudos devido a problemas financeiros ou inesperados. Doença, danos em dispositivos ou problemas de habitação podem atrapalhar a educação.',
-                    'solution-title': 'Nossa oferta',
-                    'sol1': 'Congelamento de mensalidade',
-                    'sol2': 'Seguro para laptop',
-                    'sol3': 'Assistência habitacional',
-                    'packages-title': 'Pacotes e preços',
-                    'monthly-name': 'Mensal',
-                    'yearly-name': 'Anual',
-                    'comp-title': '💰 Quando a compensação é paga?',
-                    'comp1-title': 'Em caso de doença',
-                    'comp1-text': 'Atestado médico, congelamento de mensalidade ou reembolso parcial. 10 dias úteis.',
-                    'comp2-title': 'Dano/roubo de laptop',
-                    'comp2-text': 'Documento da polícia/oficina, compensação até 300.000 drams. 5-10 dias.',
-                    'comp3-title': 'Vigência',
-                    'comp3-text': '7 dias após o pagamento. Seguro ativo.',
-                    'comp4-title': 'Se o estudante não trabalha',
-                    'comp4-text': 'Através dos pais ou parceria com universidade.',
-                    'purpose-title': 'Nossa missão',
-                    'purpose-text': 'Garantimos que nenhum estudante interrompa seus estudos devido a problemas inesperados.',
-                    'contacts-title': 'Contate-nos',
+                zh: { 
+                    company_name: "StudentGuard 保险",
+                    hero_title: "StudentGuard 保险",
+                    hero_subtitle: "保护您的学业免受意外问题影响的保险。",
+                    hero_btn1: "获取保险",
+                    hero_btn2: "了解更多",
+                    problem_title: "它解决了什么问题？",
+                    problem_text: "许多学生可能因财务或意外问题而辍学。疾病、设备损坏或住房问题可能会干扰学习。",
+                    offer_title: "我们的服务",
+                    offer1: "学费冻结",
+                    offer2: "设备保险",
+                    offer3: "住房支持",
+                    pricing_title: "套餐与价格",
+                    monthly_name: "月度",
+                    monthly_price: "2500 德拉姆",
+                    per_month: "/月",
+                    monthly_feat1: "学费冻结",
+                    monthly_feat2: "笔记本电脑保险",
+                    monthly_feat3: "住房支持",
+                    annual_name: "年度",
+                    annual_price: "30000 德拉姆",
+                    per_year: "/年",
+                    annual_feat1: "包含月度所有",
+                    annual_feat2: "+ 延长支持",
+                    annual_feat3: "24/7 热线",
+                    popular_badge: "热门",
+                    comp_title: "💵 何时支付赔偿？",
+                    comp1_title: "生病时",
+                    comp1_desc: "医疗证明，学费冻结或部分赔偿。10个工作日。",
+                    comp2_title: "笔记本电脑损坏或被盗",
+                    comp2_desc: "警方或服务报告。最高赔偿300,000德拉姆。5-10天。",
+                    comp3_title: "生效时间",
+                    comp3_desc: "付款后7天保险生效。",
+                    comp4_title: "如果学生无工作",
+                    comp4_desc: "通过家长或大学合作。",
+                    mission_title: "我们的使命",
+                    mission_text: "我们确保没有学生因意外问题而中断学业。",
+                    contact_title: "联系我们",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "姓名",
+                    form_email: "邮箱",
+                    form_msg: "留言",
+                    form_btn: "发送"
                 },
-                uk: {
-                    'cover-title': 'СтудентЗахист Страхування',
-                    'cover-slogan': '«Безпечне навчання — впевнене майбутнє»',
-                    'problem-title': 'Яку проблему вирішує проєкт?',
-                    'problem-text': 'Багато студентів можуть перервати навчання через фінансові або несподівані проблеми. Хвороба, поломка пристрою або проблеми з житлом можуть завадити навчанню.',
-                    'solution-title': 'Що ми пропонуємо',
-                    'sol1': 'Заморозка плати за навчання',
-                    'sol2': 'Страхування ноутбука',
-                    'sol3': 'Допомога з житлом',
-                    'packages-title': 'Пакети та ціни',
-                    'monthly-name': 'Місячний',
-                    'yearly-name': 'Річний',
-                    'comp-title': '💵 Коли виплачується компенсація?',
-                    'comp1-title': 'У разі хвороби',
-                    'comp1-text': 'Медична довідка, заморозка або часткова компенсація оплати навчання. 10 робочих днів.',
-                    'comp2-title': 'Пошкодження/крадіжка ноутбука',
-                    'comp2-text': 'Довідка з поліції/сервісу, компенсація до 300 000 драмів. 5-10 днів.',
-                    'comp3-title': 'Набрання чинності',
-                    'comp3-text': 'Через 7 днів після оплати. Страховка активна.',
-                    'comp4-title': 'Якщо студент не працює',
-                    'comp4-text': 'Через батьків або співпрацю з університетом.',
-                    'purpose-title': 'Наша місія',
-                    'purpose-text': 'Ми гарантуємо, що жоден студент не перерве навчання через непередбачувані проблеми.',
-                    'contacts-title': "Зв'яжіться з нами",
+                uk: { 
+                    company_name: "StudentGuard Insurance",
+                    hero_title: "StudentGuard Insurance",
+                    hero_subtitle: "Страхування, яке захищає ваше навчання від несподіваних проблем.",
+                    hero_btn1: "Отримати страховку",
+                    hero_btn2: "Дізнатися більше",
+                    problem_title: "Яку проблему вирішує проєкт?",
+                    problem_text: "Багато студентів можуть кинути навчання через фінансові або несподівані проблеми. Хвороба, поломка пристрою або проблеми з житлом можуть завадити навчанню.",
+                    offer_title: "Що ми пропонуємо",
+                    offer1: "Заморозка плати за навчання",
+                    offer2: "Страхування пристроїв",
+                    offer3: "Підтримка житла",
+                    pricing_title: "Пакети та ціни",
+                    monthly_name: "Місячний",
+                    monthly_price: "2500 драм",
+                    per_month: "/ місяць",
+                    monthly_feat1: "Заморозка оплати",
+                    monthly_feat2: "Страхування ноутбука",
+                    monthly_feat3: "Підтримка житла",
+                    annual_name: "Річний",
+                    annual_price: "30000 драм",
+                    per_year: "/ рік",
+                    annual_feat1: "Все з місячного",
+                    annual_feat2: "+ розширена підтримка",
+                    annual_feat3: "Гаряча лінія 24/7",
+                    popular_badge: "Популярне",
+                    comp_title: "💵 Коли виплачується компенсація?",
+                    comp1_title: "У разі хвороби",
+                    comp1_desc: "Медична довідка, заморозка або часткова компенсація. 10 робочих днів.",
+                    comp2_title: "Пошкодження або крадіжка ноутбука",
+                    comp2_desc: "Довідка з поліції або сервісу. Компенсація до 300 000 драм. 5–10 днів.",
+                    comp3_title: "Набрання чинності",
+                    comp3_desc: "Страховка активна через 7 днів після оплати.",
+                    comp4_title: "Якщо студент не працює",
+                    comp4_desc: "Через батьків або співпрацю з університетом.",
+                    mission_title: "Наша місія",
+                    mission_text: "Ми дбаємо, щоб жоден студент не переривав навчання через несподівані проблеми.",
+                    contact_title: "Зв'яжіться з нами",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "Ім'я",
+                    form_email: "Ел. пошта",
+                    form_msg: "Повідомлення",
+                    form_btn: "Надіслати"
                 },
-                zh: {
-                    'cover-title': '学生保护保险',
-                    'cover-slogan': '“安全学习，自信未来”',
-                    'problem-title': '项目解决了什么问题？',
-                    'problem-text': '许多学生可能因财务或意外问题而中断学业。疾病、设备损坏或住房问题都可能阻碍学习。',
-                    'solution-title': '我们的方案',
-                    'sol1': '学费冻结',
-                    'sol2': '笔记本电脑保险',
-                    'sol3': '住房援助',
-                    'packages-title': '套餐与价格',
-                    'monthly-name': '月度',
-                    'yearly-name': '年度',
-                    'comp-title': '💰 何时支付补偿？',
-                    'comp1-title': '生病情况下',
-                    'comp1-text': '医疗证明，学费冻结或部分退款。10个工作日。',
-                    'comp2-title': '笔记本电脑损坏/被盗',
-                    'comp2-text': '警察/维修中心证明，最高补偿300,000德拉姆。5-10天。',
-                    'comp3-title': '保险生效',
-                    'comp3-text': '付款后7天。保险激活。',
-                    'comp4-title': '如果学生没有工作',
-                    'comp4-text': '通过家长或与大学合作。',
-                    'purpose-title': '我们的使命',
-                    'purpose-text': '我们确保没有学生会因意外问题而中断学业。',
-                    'contacts-title': '联系我们',
+                ja: { 
+                    company_name: "StudentGuard 保険",
+                    hero_title: "StudentGuard 保険",
+                    hero_subtitle: "予期せぬトラブルから学業を守る保険。",
+                    hero_btn1: "保険に加入",
+                    hero_btn2: "もっと詳しく",
+                    problem_title: "どのような問題を解決しますか？",
+                    problem_text: "多くの学生が経済的または予期せぬ問題で中退する可能性があります。病気、デバイスの破損、住居の問題が学業を妨げる可能性があります。",
+                    offer_title: "私たちの提供内容",
+                    offer1: "授業料凍結",
+                    offer2: "デバイス保険",
+                    offer3: "住居サポート",
+                    pricing_title: "プランと料金",
+                    monthly_name: "月額",
+                    monthly_price: "2500 ドラム",
+                    per_month: "/月",
+                    monthly_feat1: "授業料凍結",
+                    monthly_feat2: "ノートパソコン保険",
+                    monthly_feat3: "住居サポート",
+                    annual_name: "年額",
+                    annual_price: "30000 ドラム",
+                    per_year: "/年",
+                    annual_feat1: "月額プランのすべて",
+                    annual_feat2: "+ 延長サポート",
+                    annual_feat3: "24時間対応ホットライン",
+                    popular_badge: "人気",
+                    comp_title: "💵 補償はいつ支払われますか？",
+                    comp1_title: "病気の場合",
+                    comp1_desc: "医療証明書、授業料凍結または一部補償。10営業日。",
+                    comp2_title: "ノートパソコンの破損・盗難",
+                    comp2_desc: "警察またはサービスレポート。最大300,000ドラムの補償。5〜10日。",
+                    comp3_title: "有効開始",
+                    comp3_desc: "支払いから7日後に保険が有効になります。",
+                    comp4_title: "学生が無職の場合",
+                    comp4_desc: "保護者または大学との連携を通じて。",
+                    mission_title: "私たちの使命",
+                    mission_text: "予期せぬ問題で学業を中断する学生をゼロにします。",
+                    contact_title: "お問い合わせ",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "名前",
+                    form_email: "メール",
+                    form_msg: "メッセージ",
+                    form_btn: "送信"
+                },
+                de: { 
+                    company_name: "StudentGuard Versicherung",
+                    hero_title: "StudentGuard Versicherung",
+                    hero_subtitle: "Versicherung, die dein Studium vor unerwarteten Problemen schützt.",
+                    hero_btn1: "Versicherung abschließen",
+                    hero_btn2: "Mehr erfahren",
+                    problem_title: "Welches Problem löst das Projekt?",
+                    problem_text: "Viele Studierende müssen ihr Studium aufgrund finanzieller oder unerwarteter Probleme abbrechen. Krankheit, Geräteschäden oder Wohnungsprobleme können den Studienverlauf stören.",
+                    offer_title: "Unser Angebot",
+                    offer1: "Studiengebührenstopp",
+                    offer2: "Geräteversicherung",
+                    offer3: "Wohnungsunterstützung",
+                    pricing_title: "Pakete & Preise",
+                    monthly_name: "Monatlich",
+                    monthly_price: "2500 Dram",
+                    per_month: "/ Monat",
+                    monthly_feat1: "Studiengebührenstopp",
+                    monthly_feat2: "Laptop-Versicherung",
+                    monthly_feat3: "Wohnungsunterstützung",
+                    annual_name: "Jährlich",
+                    annual_price: "30000 Dram",
+                    per_year: "/ Jahr",
+                    annual_feat1: "Alles vom Monatspaket",
+                    annual_feat2: "+ erweiterter Support",
+                    annual_feat3: "24/7 Hotline",
+                    popular_badge: "Beliebt",
+                    comp_title: "💵 Wann wird entschädigt?",
+                    comp1_title: "Im Krankheitsfall",
+                    comp1_desc: "Ärztliches Attest, Studiengebührenstopp oder Teilentschädigung. 10 Werktage.",
+                    comp2_title: "Laptop-Schaden oder Diebstahl",
+                    comp2_desc: "Polizei- oder Servicebericht. Entschädigung bis zu 300.000 Dram. 5–10 Tage.",
+                    comp3_title: "Inkrafttreten",
+                    comp3_desc: "Die Versicherung ist 7 Tage nach Zahlung aktiv.",
+                    comp4_title: "Wenn Student nicht arbeitet",
+                    comp4_desc: "Über Eltern oder Hochschulkooperation.",
+                    mission_title: "Unsere Mission",
+                    mission_text: "Wir sorgen dafür, dass kein Student sein Studium wegen unerwarteter Probleme unterbrechen muss.",
+                    contact_title: "Kontakt",
+                    phone: "+374 77 123456",
+                    email: "info@studentguard.am",
+                    form_name: "Name",
+                    form_email: "E-Mail",
+                    form_msg: "Nachricht",
+                    form_btn: "Senden"
                 }
             };
-
-            // set default language hy
-            let currentLang = 'hy';
-
-            function updateLanguage(lang) {
-                const t = translations[lang] || translations['hy'];
-                for (let key in t) {
-                    const el = document.getElementById(key);
-                    if (el) {
-                        el.innerText = t[key];
+            // fallback for any missing keys (should be covered)
+            function updateLanguage(langCode) {
+                const elements = document.querySelectorAll('[data-i18n]');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[langCode] && translations[langCode][key]) {
+                        el.innerText = translations[langCode][key];
+                    } else if (translations.en[key]) {
+                        el.innerText = translations.en[key]; // fallback
                     }
-                }
-                // update current lang label
-                document.getElementById('currentLangLabel').innerText = 
-                    lang === 'hy' ? 'Հայերեն' :
-                    lang === 'ru' ? 'Русский' :
-                    lang === 'en' ? 'English' :
-                    lang === 'es' ? 'Español' :
-                    lang === 'pt' ? 'Português' :
-                    lang === 'uk' ? 'Українська' : '中文';
-                currentLang = lang;
+                });
+                // placeholders
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-i18n-placeholder');
+                    if (translations[langCode] && translations[langCode][key]) {
+                        el.placeholder = translations[langCode][key];
+                    } else if (translations.en[key]) {
+                        el.placeholder = translations.en[key];
+                    }
+                });
             }
 
-            // language dropdown logic
-            const btn = document.getElementById('langDropdownBtn');
-            const dropdown = document.getElementById('langDropdown');
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                dropdown.classList.toggle('show');
+            document.getElementById('languageSwitcher').addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
             });
 
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.addEventListener('click', (e) => {
-                    const lang = opt.getAttribute('data-lang');
-                    updateLanguage(lang);
-                    dropdown.classList.remove('show');
-                });
-            });
-
-            // close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.classList.remove('show');
-                }
-            });
-
-            // initial update
+            // set default hy
             updateLanguage('hy');
-
-            // also translate package features extra bits (static list items partially translated via id, but additional yearly features can be set manually)
-            // we already have IDs for package names, but features text inside list items: for monthly-feat we can set via js but fine for now, set inner for simplicity
-            // adjust extra texts
-            function setFeatures() {
-                // monthly features spans
-                document.querySelectorAll('#monthly-feat span').forEach((span, idx) => {
-                    if (currentLang === 'hy') span.innerText = ['Ուսման վճարի սառեցում','Նոթբուքի ապահովագրություն','Բնակարանային աջակցություն'][idx];
-                    else if (currentLang === 'ru') span.innerText = ['Заморозка оплаты','Страхование ноутбука','Помощь с жильём'][idx];
-                    else if (currentLang === 'en') span.innerText = ['Tuition freeze','Laptop insurance','Housing help'][idx];
-                    else if (currentLang === 'es') span.innerText = ['Congelación','Seguro laptop','Asistencia vivienda'][idx];
-                    else if (currentLang === 'pt') span.innerText = ['Congelamento','Seguro laptop','Assistência'][idx];
-                    else if (currentLang === 'uk') span.innerText = ['Заморозка','Страхування','Допомога'][idx];
-                    else span.innerText = ['学费冻结','笔记本保险','住房援助'][idx];
-                });
-                document.querySelectorAll('#yearly-feat span').forEach((span, idx) => {
-                    if (currentLang === 'hy') span.innerText = ['Ամեն ինչ ամսականից','+ երկարաձգված աջակցություն','24/7 թեժ գիծ'][idx];
-                    else if (currentLang === 'ru') span.innerText = ['Всё из месячного','+ расширенная поддержка','Горячая линия 24/7'][idx];
-                    else if (currentLang === 'en') span.innerText = ['All monthly benefits','+ extended support','24/7 hotline'][idx];
-                    else if (currentLang === 'es') span.innerText = ['Todo mensual','+ soporte extendido','Línea 24/7'][idx];
-                    else if (currentLang === 'pt') span.innerText = ['Tudo mensal','+ suporte estendido','Linha 24/7'][idx];
-                    else if (currentLang === 'uk') span.innerText = ['Все місячне','+ розширена підтримка','Гаряча лінія 24/7'][idx];
-                    else span.innerText = ['月度全部','+ 延长支持','24/7热线'][idx];
-                });
-            }
-
-            // override updateLanguage to also call setFeatures
-            const originalUpdate = updateLanguage;
-            window.updateLanguage = function(lang) {
-                originalUpdate(lang);
-                setFeatures();
-            };
-            updateLanguage = window.updateLanguage;
-
-            // call once
-            setFeatures();
-
-            // add listener to each lang-option to also call setFeatures
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.addEventListener('click', (e) => {
-                    const lang = opt.getAttribute('data-lang');
-                    updateLanguage(lang);
-                    dropdown.classList.remove('show');
-                });
-            });
         })();
     </script>
 </body>
