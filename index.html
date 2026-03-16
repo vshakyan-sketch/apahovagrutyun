@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ----- Minimalist redesign ----- */
+        /* ----- MINIMALIST CLEAN DESIGN (исправлен перевод) ----- */
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +23,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #f4f7fc;  /* very light gray-blue, clean */
+            background: #f4f7fc;
             color: #1e2b3f;
             line-height: 1.5;
         }
@@ -34,14 +34,13 @@
             letter-spacing: -0.02em;
         }
 
-        /* simple container */
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* ----- HEADER (minimal, sticky, light blur) ----- */
+        /* ----- HEADER (sticky, light) ----- */
         header {
             position: sticky;
             top: 0;
@@ -50,7 +49,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.8);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -81,7 +80,6 @@
             color: #0057ff;
         }
 
-        /* language dropdown minimal */
         .lang-select {
             background: transparent;
             border: 1px solid #d0dae8;
@@ -137,7 +135,6 @@
             cursor: pointer;
         }
 
-        /* mobile nav */
         @media (max-width: 1024px) {
             .nav-menu { gap: 1.2rem; }
         }
@@ -192,7 +189,6 @@
             flex-wrap: wrap;
         }
 
-        /* minimal illustration (just simple icons) */
         .hero-illustration {
             flex: 1;
             display: flex;
@@ -232,7 +228,6 @@
             text-align: center;
         }
 
-        /* cards minimal */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -258,7 +253,6 @@
             margin-bottom: 1rem;
         }
 
-        /* pricing */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -303,7 +297,6 @@
             padding-bottom: 0.5rem;
         }
 
-        /* compensation timeline */
         .timeline-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -316,7 +309,6 @@
             border: 1px solid #edf2f9;
         }
 
-        /* contact */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -352,7 +344,6 @@
             transition: 0.2s;
         }
 
-        /* footer */
         footer {
             background: white;
             border-top: 1px solid #eef2f6;
@@ -375,7 +366,6 @@
             color: #0057ff;
         }
 
-        /* reveal animation (simple) */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -390,14 +380,10 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
-
-        /* adjustments */
-        a { text-decoration: none; }
-        hr { border: none; border-top: 1px solid #eef2f6; }
     </style>
 </head>
 <body>
-    <!-- HEADER (minimal) -->
+    <!-- HEADER -->
     <header>
         <div class="logo" data-i18n="logo">ՈւսանողՊաշտպան</div>
         <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
@@ -439,10 +425,10 @@
     </section>
     <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
 
-    <!-- PROBLEM SECTION -->
+    <!-- PROBLEM -->
     <section id="problem" class="reveal">
         <h2 class="section-title" data-i18n="problem_title">Ի՞նչ խնդիր է լուծում նախագիծը</h2>
-        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.2rem;">
+        <div class="card" style="max-width:800px; margin:0 auto; text-align:center; font-size:1.2rem;">
             <p data-i18n="problem_text">Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։</p>
         </div>
     </section>
@@ -471,7 +457,7 @@
                 </ul>
                 <button class="btn-primary" data-i18n="choose_plan">Choose plan</button>
             </div>
-            <div class="pricing-card" style="border: 2px solid #0a2540;">
+            <div class="pricing-card" style="border:2px solid #0a2540;">
                 <div class="best-badge" data-i18n="best_value">ԼԱՎԱԳՈՒՅՆ ԱՌԱՋԱՐԿ</div>
                 <h3 data-i18n="annual_title">Տարեկան</h3>
                 <div class="price" data-i18n="annual_price">30000 դրամ / տարի</div>
@@ -499,7 +485,7 @@
     <!-- MISSION -->
     <section id="mission" class="reveal">
         <h2 class="section-title" data-i18n="mission_title">Մեր առաքելությունը</h2>
-        <div class="card" style="max-width: 800px; margin:0 auto; font-size:1.4rem; text-align: center;" data-i18n="mission_text">Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։</div>
+        <div class="card" style="max-width:800px; margin:0 auto; font-size:1.4rem; text-align:center;" data-i18n="mission_text">Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։</div>
     </section>
 
     <!-- CONTACT -->
@@ -509,7 +495,7 @@
             <div class="contact-info">
                 <p><i class="fas fa-phone-alt"></i> <span data-i18n="contact_phone">+374 77 123456</span></p>
                 <p><i class="fas fa-envelope"></i> <span data-i18n="contact_email">info@studentguard.am</span></p>
-                <div style="background: #eef2f6; height: 160px; border-radius: 2rem; margin-top: 2rem; display: flex; align-items: center; justify-content: center; color: #6b7f99;">map placeholder</div>
+                <div style="background:#eef2f6; height:160px; border-radius:2rem; margin-top:2rem; display:flex; align-items:center; justify-content:center; color:#6b7f99;">map placeholder</div>
             </div>
             <div class="contact-form">
                 <input type="text" placeholder="Անուն" data-i18n-placeholder="form_name" id="name">
@@ -542,52 +528,429 @@
 
     <script>
         (function() {
+            // ПОЛНЫЕ ПЕРЕВОДЫ ДЛЯ 7 ЯЗЫКОВ (рабочая версия)
             const translations = {
-                hy: { /* ... same as before but shortened for brevity, in real code would be full */ 
-                    logo: "ՈւսանողՊաշտպան", nav_home: "Գլխավոր", nav_services: "Ծառայություններ", nav_pricing: "Գնացուցակ", nav_compensation: "Փոխհատուցում", nav_mission: "Առաքելություն", nav_contact: "Կապ",
-                    get_insurance: "Ստանալ ապահովագրություն", hero_title: "ՈւսանողՊաշտպան Ինշուրանս", hero_subtitle: "Պաշտպանություն ուսանողների համար, որոնք անսպասելի խնդիրների առաջ են կանգնում", hero_btn1: "Ստանալ ապահովագրություն", hero_btn2: "Իմանալ ավելին",
-                    problem_title: "Ի՞նչ խնդիր է լուծում նախագիծը", problem_text: "Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։",
-                    services_title: "Ինչ ենք առաջարկում", service1_title: "Ուսման վճարի սառեցում", service2_title: "Սարքերի ապահովագրություն", service3_title: "Բնակարանի աջակցություն",
-                    pricing_title: "Փաթեթներ և գին", monthly_title: "Ամսական", monthly_price: "2500 դրամ / ամիս", monthly_include1: "Ուսման վճարի սառեցում", monthly_include2: "Նոթբուքի ապահովագրություն", monthly_include3: "Բնակարանային աջակցություն",
-                    annual_title: "Տարեկան", annual_price: "30000 դրամ / տարի", annual_include1: "Ամեն ինչ ամսականից", annual_include2: "+ երկարաձգված աջակցություն", annual_include3: "24/7 թեժ գիծ", choose_plan: "Ընտրել պլանը", best_value: "ԼԱՎԱԳՈՒՅՆ ԱՌԱՋԱՐԿ",
-                    compensation_title: "💵 Երբ է կատարվում փոխհատուցումը", comp1_title: "Հիվանդության դեպքում", comp1_text1: "Բժշկական տեղեկանք", comp1_text2: "Ուսման վճարի սառեցում կամ մասնակի փոխհատուցում", comp1_text3: "10 աշխատանքային օր",
-                    comp2_title: "Նոթբուքի վնաս կամ գողություն", comp2_text1: "Ոստիկանության կամ սերվիսի փաստաթուղթ", comp2_text2: "Փոխհատուցում մինչև 300,000 դրամ", comp2_text3: "5–10 օր",
-                    comp3_title: "Ուժի մեջ է մտնում", comp3_text1: "Վճարումից 7 օր հետո ապահովագրությունը ակտիվ է",
-                    comp4_title: "Եթե ուսանողը չի աշխատում", comp4_text1: "Ծնողի միջոցով կամ համալսարանի հետ համագործակցությամբ",
-                    mission_title: "Մեր առաքելությունը", mission_text: "Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։",
-                    contact_title: "Կապ մեզ հետ", contact_phone: "+374 77 123456", contact_email: "info@studentguard.am", form_name: "Անուն", form_email: "Էլ. հասցե", form_message: "Հաղորդագրություն", form_send: "Ուղարկել", form_success: "Հաղորդագրությունն ուղարկված է",
+                hy: {
+                    logo: "ՈւսանողՊաշտպան",
+                    nav_home: "Գլխավոր",
+                    nav_services: "Ծառայություններ",
+                    nav_pricing: "Գնացուցակ",
+                    nav_compensation: "Փոխհատուցում",
+                    nav_mission: "Առաքելություն",
+                    nav_contact: "Կապ",
+                    get_insurance: "Ստանալ ապահովագրություն",
+                    hero_title: "ՈւսանողՊաշտպան Ինշուրանս",
+                    hero_subtitle: "Պաշտպանություն ուսանողների համար, որոնք անսպասելի խնդիրների առաջ են կանգնում",
+                    hero_btn1: "Ստանալ ապահովագրություն",
+                    hero_btn2: "Իմանալ ավելին",
+                    problem_title: "Ի՞նչ խնդիր է լուծում նախագիծը",
+                    problem_text: "Շատ ուսանողներ ֆինանսական կամ անսպասելի խնդիրների պատճառով կարող են դադարեցնել ուսումը։ Հիվանդությունը, սարքի վնասը կամ բնակարանի խնդիրները կարող են խանգարել ուսմանը։",
+                    services_title: "Ինչ ենք առաջարկում",
+                    service1_title: "Ուսման վճարի սառեցում",
+                    service2_title: "Սարքերի ապահովագրություն",
+                    service3_title: "Բնակարանի աջակցություն",
+                    pricing_title: "Փաթեթներ և գին",
+                    monthly_title: "Ամսական",
+                    monthly_price: "2500 դրամ / ամիս",
+                    monthly_include1: "Ուսման վճարի սառեցում",
+                    monthly_include2: "Նոթբուքի ապահովագրություն",
+                    monthly_include3: "Բնակարանային աջակցություն",
+                    annual_title: "Տարեկան",
+                    annual_price: "30000 դրամ / տարի",
+                    annual_include1: "Ամեն ինչ ամսականից",
+                    annual_include2: "+ երկարաձգված աջակցություն",
+                    annual_include3: "24/7 թեժ գիծ",
+                    choose_plan: "Ընտրել պլանը",
+                    best_value: "ԼԱՎԱԳՈՒՅՆ ԱՌԱՋԱՐԿ",
+                    compensation_title: "💵 Երբ է կատարվում փոխհատուցումը",
+                    comp1_title: "Հիվանդության դեպքում",
+                    comp1_text1: "Բժշկական տեղեկանք",
+                    comp1_text2: "Ուսման վճարի սառեցում կամ մասնակի փոխհատուցում",
+                    comp1_text3: "10 աշխատանքային օր",
+                    comp2_title: "Նոթբուքի վնաս կամ գողություն",
+                    comp2_text1: "Ոստիկանության կամ սերվիսի փաստաթուղթ",
+                    comp2_text2: "Փոխհատուցում մինչև 300,000 դրամ",
+                    comp2_text3: "5–10 օր",
+                    comp3_title: "Ուժի մեջ է մտնում",
+                    comp3_text1: "Վճարումից 7 օր հետո ապահովագրությունը ակտիվ է",
+                    comp4_title: "Եթե ուսանողը չի աշխատում",
+                    comp4_text1: "Ծնողի միջոցով կամ համալսարանի հետ համագործակցությամբ",
+                    mission_title: "Մեր առաքելությունը",
+                    mission_text: "Մենք համոզվում ենք, որ ոչ մի ուսանող չպետք է ընդհատի իր կրթությունը անսպասելի խնդիրների պատճառով։",
+                    contact_title: "Կապ մեզ հետ",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "Անուն",
+                    form_email: "Էլ. հասցե",
+                    form_message: "Հաղորդագրություն",
+                    form_send: "Ուղարկել",
+                    form_success: "Հաղորդագրությունն ուղարկված է",
                     footer_copyright: "© 2025 ՈւսանողՊաշտպան Ինշուրանս. Բոլոր իրավունքները պաշտպանված են:"
                 },
-                en: { /* ... full as before, we include only minimal for demo, but you can copy from previous answer */ 
-                    logo: "StudentGuard", nav_home: "Home", nav_services: "Services", nav_pricing: "Pricing", nav_compensation: "Compensation", nav_mission: "Mission", nav_contact: "Contact", get_insurance: "Get Insurance", hero_title: "StudentGuard Insurance", hero_subtitle: "Protection for students facing unexpected issues", hero_btn1: "Get Insurance", hero_btn2: "Learn More", problem_title: "What problem do we solve?", problem_text: "Many students may drop out due to financial or unexpected problems. Illness, device damage, or housing issues can hinder studies.", services_title: "What we offer", service1_title: "Tuition freeze", service2_title: "Device insurance", service3_title: "Housing support", pricing_title: "Plans & pricing", monthly_title: "Monthly", monthly_price: "2500 AMD / month", monthly_include1: "Tuition freeze", monthly_include2: "Laptop insurance", monthly_include3: "Housing support", annual_title: "Annual", annual_price: "30000 AMD / year", annual_include1: "Everything in monthly", annual_include2: "+ extended support", annual_include3: "24/7 hotline", choose_plan: "Choose plan", best_value: "BEST VALUE", compensation_title: "💵 When compensation applies", comp1_title: "In case of illness", comp1_text1: "Medical certificate", comp1_text2: "Tuition freeze or partial refund", comp1_text3: "10 business days", comp2_title: "Laptop damage/theft", comp2_text1: "Police or service report", comp2_text2: "Compensation up to 300,000 AMD", comp2_text3: "5–10 days", comp3_title: "Coverage starts", comp3_text1: "Insurance active 7 days after payment", comp4_title: "If student unemployed", comp4_text1: "Via parent or uni cooperation", mission_title: "Our mission", mission_text: "We ensure no student interrupts education due to unexpected issues.", contact_title: "Contact us", contact_phone: "+374 77 123456", contact_email: "info@studentguard.am", form_name: "Name", form_email: "Email", form_message: "Message", form_send: "Send", form_success: "Message sent", footer_copyright: "© 2025 StudentGuard Insurance. All rights reserved." 
+                en: {
+                    logo: "StudentGuard",
+                    nav_home: "Home",
+                    nav_services: "Services",
+                    nav_pricing: "Pricing",
+                    nav_compensation: "Compensation",
+                    nav_mission: "Mission",
+                    nav_contact: "Contact",
+                    get_insurance: "Get Insurance",
+                    hero_title: "StudentGuard Insurance",
+                    hero_subtitle: "Protection for students facing unexpected issues",
+                    hero_btn1: "Get Insurance",
+                    hero_btn2: "Learn More",
+                    problem_title: "What problem do we solve?",
+                    problem_text: "Many students may drop out due to financial or unexpected problems. Illness, device damage, or housing issues can hinder studies.",
+                    services_title: "What we offer",
+                    service1_title: "Tuition freeze",
+                    service2_title: "Device insurance",
+                    service3_title: "Housing support",
+                    pricing_title: "Plans & pricing",
+                    monthly_title: "Monthly",
+                    monthly_price: "2500 AMD / month",
+                    monthly_include1: "Tuition freeze",
+                    monthly_include2: "Laptop insurance",
+                    monthly_include3: "Housing support",
+                    annual_title: "Annual",
+                    annual_price: "30000 AMD / year",
+                    annual_include1: "Everything in monthly",
+                    annual_include2: "+ extended support",
+                    annual_include3: "24/7 hotline",
+                    choose_plan: "Choose plan",
+                    best_value: "BEST VALUE",
+                    compensation_title: "💵 When compensation applies",
+                    comp1_title: "In case of illness",
+                    comp1_text1: "Medical certificate",
+                    comp1_text2: "Tuition freeze or partial refund",
+                    comp1_text3: "10 business days",
+                    comp2_title: "Laptop damage/theft",
+                    comp2_text1: "Police or service report",
+                    comp2_text2: "Compensation up to 300,000 AMD",
+                    comp2_text3: "5–10 days",
+                    comp3_title: "Coverage starts",
+                    comp3_text1: "Insurance active 7 days after payment",
+                    comp4_title: "If student unemployed",
+                    comp4_text1: "Via parent or uni cooperation",
+                    mission_title: "Our mission",
+                    mission_text: "We ensure no student interrupts education due to unexpected issues.",
+                    contact_title: "Contact us",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "Name",
+                    form_email: "Email",
+                    form_message: "Message",
+                    form_send: "Send",
+                    form_success: "Message sent",
+                    footer_copyright: "© 2025 StudentGuard Insurance. All rights reserved."
                 },
-                ru: { /* ... */ },
-                zh: { /* ... */ },
-                uk: { /* ... */ },
-                ja: { /* ... */ },
-                de: { /* ... */ }
+                ru: {
+                    logo: "СтудентГард",
+                    nav_home: "Главная",
+                    nav_services: "Услуги",
+                    nav_pricing: "Цены",
+                    nav_compensation: "Компенсация",
+                    nav_mission: "Миссия",
+                    nav_contact: "Контакты",
+                    get_insurance: "Получить страховку",
+                    hero_title: "СтудентГард Страхование",
+                    hero_subtitle: "Защита для студентов, столкнувшихся с непредвиденными проблемами",
+                    hero_btn1: "Получить страховку",
+                    hero_btn2: "Узнать больше",
+                    problem_title: "Какую проблему решаем?",
+                    problem_text: "Многие студенты бросают учебу из-за финансовых или неожиданных проблем. Болезнь, поломка устройств или проблемы с жильем могут помешать учебе.",
+                    services_title: "Что мы предлагаем",
+                    service1_title: "Заморозка оплаты",
+                    service2_title: "Страхование устройств",
+                    service3_title: "Поддержка жилья",
+                    pricing_title: "Пакеты и цены",
+                    monthly_title: "Ежемесячный",
+                    monthly_price: "2500 драм / месяц",
+                    monthly_include1: "Заморозка оплаты",
+                    monthly_include2: "Страхование ноутбука",
+                    monthly_include3: "Поддержка жилья",
+                    annual_title: "Годовой",
+                    annual_price: "30000 драм / год",
+                    annual_include1: "Всё из месячного",
+                    annual_include2: "+ расширенная поддержка",
+                    annual_include3: "Горячая линия 24/7",
+                    choose_plan: "Выбрать",
+                    best_value: "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ",
+                    compensation_title: "💵 Когда выплачивается компенсация",
+                    comp1_title: "В случае болезни",
+                    comp1_text1: "Медицинская справка",
+                    comp1_text2: "Заморозка или частичная компенсация",
+                    comp1_text3: "10 рабочих дней",
+                    comp2_title: "Поломка/кража ноутбука",
+                    comp2_text1: "Справка из полиции или сервиса",
+                    comp2_text2: "Компенсация до 300 000 драм",
+                    comp2_text3: "5–10 дней",
+                    comp3_title: "Вступление в силу",
+                    comp3_text1: "Страховка активна через 7 дней после оплаты",
+                    comp4_title: "Если студент не работает",
+                    comp4_text1: "Через родителей или вуз",
+                    mission_title: "Наша миссия",
+                    mission_text: "Мы гарантируем, что ни один студент не прервёт обучение из-за неожиданных проблем.",
+                    contact_title: "Свяжитесь с нами",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "Имя",
+                    form_email: "Email",
+                    form_message: "Сообщение",
+                    form_send: "Отправить",
+                    form_success: "Сообщение отправлено",
+                    footer_copyright: "© 2025 СтудентГард Страхование. Все права защищены."
+                },
+                zh: {
+                    logo: "学生守护",
+                    nav_home: "首页",
+                    nav_services: "服务",
+                    nav_pricing: "价格",
+                    nav_compensation: "赔偿",
+                    nav_mission: "使命",
+                    nav_contact: "联系",
+                    get_insurance: "获取保险",
+                    hero_title: "学生守护保险",
+                    hero_subtitle: "为面临突发问题的学生提供保护",
+                    hero_btn1: "获取保险",
+                    hero_btn2: "了解更多",
+                    problem_title: "我们解决什么问题？",
+                    problem_text: "许多学生因财务或突发问题而辍学。疾病、设备损坏或住房问题可能干扰学习。",
+                    services_title: "我们的服务",
+                    service1_title: "学费冻结",
+                    service2_title: "设备保险",
+                    service3_title: "住房支持",
+                    pricing_title: "套餐与价格",
+                    monthly_title: "月度",
+                    monthly_price: "2500德拉姆/月",
+                    monthly_include1: "学费冻结",
+                    monthly_include2: "笔记本电脑保险",
+                    monthly_include3: "住房支持",
+                    annual_title: "年度",
+                    annual_price: "30000德拉姆/年",
+                    annual_include1: "包含月度所有",
+                    annual_include2: "+ 延长支持",
+                    annual_include3: "24/7热线",
+                    choose_plan: "选择方案",
+                    best_value: "最超值",
+                    compensation_title: "💵 何时赔偿",
+                    comp1_title: "生病时",
+                    comp1_text1: "医疗证明",
+                    comp1_text2: "学费冻结或部分补偿",
+                    comp1_text3: "10个工作日",
+                    comp2_title: "笔记本电脑损坏/被盗",
+                    comp2_text1: "警方或维修证明",
+                    comp2_text2: "最高赔偿30万德拉姆",
+                    comp2_text3: "5-10天",
+                    comp3_title: "生效时间",
+                    comp3_text1: "付款后7天保险生效",
+                    comp4_title: "如果学生无工作",
+                    comp4_text1: "通过家长或大学合作",
+                    mission_title: "我们的使命",
+                    mission_text: "我们确保没有学生因突发问题中断学业。",
+                    contact_title: "联系我们",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "姓名",
+                    form_email: "邮箱",
+                    form_message: "留言",
+                    form_send: "发送",
+                    form_success: "消息已发送",
+                    footer_copyright: "© 2025 学生守护保险。保留所有权利。"
+                },
+                uk: {
+                    logo: "СтудентГард",
+                    nav_home: "Головна",
+                    nav_services: "Послуги",
+                    nav_pricing: "Ціни",
+                    nav_compensation: "Компенсація",
+                    nav_mission: "Місія",
+                    nav_contact: "Контакти",
+                    get_insurance: "Отримати страховку",
+                    hero_title: "СтудентГард Страхування",
+                    hero_subtitle: "Захист для студентів, які зіткнулися з непередбаченими проблемами",
+                    hero_btn1: "Отримати",
+                    hero_btn2: "Дізнатись більше",
+                    problem_title: "Яку проблему вирішуємо?",
+                    problem_text: "Багато студентів кидають навчання через фінансові або несподівані проблеми. Хвороба, поломка пристроїв або житлові проблеми можуть завадити навчанню.",
+                    services_title: "Що ми пропонуємо",
+                    service1_title: "Замороження оплати",
+                    service2_title: "Страхування пристроїв",
+                    service3_title: "Підтримка житла",
+                    pricing_title: "Пакети та ціни",
+                    monthly_title: "Місячний",
+                    monthly_price: "2500 драм/міс",
+                    monthly_include1: "Замороження оплати",
+                    monthly_include2: "Страхування ноутбука",
+                    monthly_include3: "Підтримка житла",
+                    annual_title: "Річний",
+                    annual_price: "30000 драм/рік",
+                    annual_include1: "Все з місячного",
+                    annual_include2: "+ розширена підтримка",
+                    annual_include3: "Гаряча лінія 24/7",
+                    choose_plan: "Обрати",
+                    best_value: "НАЙКРАЩЕ",
+                    compensation_title: "💵 Коли виплачується компенсація",
+                    comp1_title: "У разі хвороби",
+                    comp1_text1: "Медична довідка",
+                    comp1_text2: "Замороження або часткова компенсація",
+                    comp1_text3: "10 робочих днів",
+                    comp2_title: "Пошкодження/крадіжка ноутбука",
+                    comp2_text1: "Довідка поліції або сервісу",
+                    comp2_text2: "Компенсація до 300 000 драм",
+                    comp2_text3: "5–10 днів",
+                    comp3_title: "Набуття чинності",
+                    comp3_text1: "Страховка активна через 7 днів після оплати",
+                    comp4_title: "Якщо студент не працює",
+                    comp4_text1: "Через батьків або університет",
+                    mission_title: "Наша місія",
+                    mission_text: "Ми гарантуємо, що жоден студент не перерве навчання через несподівані проблеми.",
+                    contact_title: "Зв'яжіться з нами",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "Ім'я",
+                    form_email: "Email",
+                    form_message: "Повідомлення",
+                    form_send: "Надіслати",
+                    form_success: "Повідомлення надіслано",
+                    footer_copyright: "© 2025 СтудентГард Страхування. Всі права захищені."
+                },
+                ja: {
+                    logo: "学生ガード",
+                    nav_home: "ホーム",
+                    nav_services: "サービス",
+                    nav_pricing: "料金",
+                    nav_compensation: "補償",
+                    nav_mission: "ミッション",
+                    nav_contact: "お問い合わせ",
+                    get_insurance: "保険に加入",
+                    hero_title: "学生ガード保険",
+                    hero_subtitle: "予期せぬ問題に直面する学生を保護",
+                    hero_btn1: "保険に加入",
+                    hero_btn2: "詳細を見る",
+                    problem_title: "どのような問題を解決しますか？",
+                    problem_text: "多くの学生が経済的または予期せぬ問題で中退します。病気、デバイスの破損、住居の問題が学習を妨げる可能性があります。",
+                    services_title: "提供サービス",
+                    service1_title: "授業料凍結",
+                    service2_title: "デバイス保険",
+                    service3_title: "住居サポート",
+                    pricing_title: "プランと料金",
+                    monthly_title: "月額",
+                    monthly_price: "2500ドラム/月",
+                    monthly_include1: "授業料凍結",
+                    monthly_include2: "ノートパソコン保険",
+                    monthly_include3: "住居サポート",
+                    annual_title: "年額",
+                    annual_price: "30000ドラム/年",
+                    annual_include1: "月額プラン全て",
+                    annual_include2: "+ 延長サポート",
+                    annual_include3: "24時間対応ホットライン",
+                    choose_plan: "プランを選ぶ",
+                    best_value: "ベストバリュー",
+                    compensation_title: "💵 補償が適用される場合",
+                    comp1_title: "病気の場合",
+                    comp1_text1: "医療証明書",
+                    comp1_text2: "授業料凍結または一部払い戻し",
+                    comp1_text3: "10営業日",
+                    comp2_title: "ノートPCの破損・盗難",
+                    comp2_text1: "警察または修理証明書",
+                    comp2_text2: "最大30万ドラムの補償",
+                    comp2_text3: "5～10日",
+                    comp3_title: "有効開始",
+                    comp3_text1: "支払いから7日後に保険有効",
+                    comp4_title: "学生が無職の場合",
+                    comp4_text1: "保護者または大学との連携",
+                    mission_title: "私たちの使命",
+                    mission_text: "予期せぬ問題で学生が学びを中断しないようにします。",
+                    contact_title: "お問い合わせ",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "名前",
+                    form_email: "メール",
+                    form_message: "メッセージ",
+                    form_send: "送信",
+                    form_success: "メッセージを送信しました",
+                    footer_copyright: "© 2025 学生ガード保険。全著作権所有。"
+                },
+                de: {
+                    logo: "StudentGuard",
+                    nav_home: "Start",
+                    nav_services: "Leistungen",
+                    nav_pricing: "Preise",
+                    nav_compensation: "Entschädigung",
+                    nav_mission: "Mission",
+                    nav_contact: "Kontakt",
+                    get_insurance: "Versicherung erhalten",
+                    hero_title: "StudentGuard Versicherung",
+                    hero_subtitle: "Schutz für Studenten bei unerwarteten Problemen",
+                    hero_btn1: "Versicherung erhalten",
+                    hero_btn2: "Mehr erfahren",
+                    problem_title: "Welches Problem lösen wir?",
+                    problem_text: "Viele Studenten brechen ihr Studium aufgrund finanzieller oder unerwarteter Probleme ab. Krankheit, Geräteschäden oder Wohnungsprobleme können das Studium behindern.",
+                    services_title: "Unser Angebot",
+                    service1_title: "Studiengebührenstopp",
+                    service2_title: "Geräteversicherung",
+                    service3_title: "Wohnungsunterstützung",
+                    pricing_title: "Pakete & Preise",
+                    monthly_title: "Monatlich",
+                    monthly_price: "2500 Dram / Monat",
+                    monthly_include1: "Studiengebührenstopp",
+                    monthly_include2: "Laptop-Versicherung",
+                    monthly_include3: "Wohnungsunterstützung",
+                    annual_title: "Jährlich",
+                    annual_price: "30000 Dram / Jahr",
+                    annual_include1: "Alles im Monatlichen",
+                    annual_include2: "+ erweiterte Unterstützung",
+                    annual_include3: "24/7 Hotline",
+                    choose_plan: "Tarif wählen",
+                    best_value: "PREIS-LEISTUNG",
+                    compensation_title: "💵 Wann wird entschädigt?",
+                    comp1_title: "Im Krankheitsfall",
+                    comp1_text1: "Ärztliches Attest",
+                    comp1_text2: "Studiengebührenstopp oder Teilerstattung",
+                    comp1_text3: "10 Werktage",
+                    comp2_title: "Laptop-Schaden/Diebstahl",
+                    comp2_text1: "Polizei- oder Servicebericht",
+                    comp2_text2: "Entschädigung bis 300.000 Dram",
+                    comp2_text3: "5–10 Tage",
+                    comp3_title: "Inkrafttreten",
+                    comp3_text1: "Versicherung aktiv 7 Tage nach Zahlung",
+                    comp4_title: "Wenn Student nicht arbeitet",
+                    comp4_text1: "Über Eltern oder Uni-Kooperation",
+                    mission_title: "Unsere Mission",
+                    mission_text: "Wir sorgen dafür, dass kein Student wegen unerwarteter Probleme sein Studium unterbricht.",
+                    contact_title: "Kontakt",
+                    contact_phone: "+374 77 123456",
+                    contact_email: "info@studentguard.am",
+                    form_name: "Name",
+                    form_email: "E-Mail",
+                    form_message: "Nachricht",
+                    form_send: "Senden",
+                    form_success: "Nachricht gesendet",
+                    footer_copyright: "© 2025 StudentGuard Versicherung. Alle Rechte vorbehalten."
+                }
             };
-            // For brevity, only hy and en are partially filled; in final version you would include all languages from previous answer.
-            // We'll include full objects from previous code for completeness – but since answer size limit, we keep as is; the function works.
 
             function setLanguage(lang) {
                 const elements = document.querySelectorAll('[data-i18n]');
                 elements.forEach(el => {
                     const key = el.getAttribute('data-i18n');
                     if (translations[lang] && translations[lang][key]) {
-                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                            el.placeholder = translations[lang][key];
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+                            // для select не используем, но оставим
                         } else {
                             el.innerText = translations[lang][key];
                         }
                     }
                 });
+                // Placeholders
                 document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                     const key = el.getAttribute('data-i18n-placeholder');
                     if (translations[lang] && translations[lang][key]) {
                         el.placeholder = translations[lang][key];
                     }
                 });
+                // Кнопки (input button) не трогаем, они уже обновлены через innerText если есть data-i18n
             }
 
             document.getElementById('langSwitcher').addEventListener('change', (e) => {
@@ -618,6 +981,7 @@
             }, { threshold: 0.1 });
             reveals.forEach(r => observer.observe(r));
 
+            // установка языка по умолчанию
             setLanguage('hy');
         })();
     </script>
